@@ -1,0 +1,2 @@
+@main(arg1: bool, arg2: bool) {
+}

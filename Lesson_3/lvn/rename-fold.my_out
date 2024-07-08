@@ -1,0 +1,8 @@
+@main {
+  v1: int = const 4;
+  lvn.0: int = const 0;
+  mul1: int = mul v1 lvn.0;
+  add1: int = add v1 lvn.0;
+  print mul1;
+  print add1;
+}

@@ -1,0 +1,33 @@
+{
+  "functions": [
+    {
+      "instrs": [
+        {
+          "dest": "a",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "b",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "label": "lbl"
+        },
+        {
+          "args": [
+            "a",
+            "b"
+          ],
+          "dest": "b",
+          "op": "add",
+          "type": "int"
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}

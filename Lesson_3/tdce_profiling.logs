@@ -1,0 +1,88 @@
+******************************
+Results for tdce/reassign.bril:
+42
+
+total_dyn_inst: 3
+
+Results for tdce/reassign.my_out:
+42
+
+total_dyn_inst: 2
+
+******************************
+Results for tdce/reassign-dkp.bril:
+42
+
+total_dyn_inst: 3
+
+Results for tdce/reassign-dkp.my_out:
+42
+
+total_dyn_inst: 2
+
+******************************
+Results for tdce/combo.bril:
+4
+
+total_dyn_inst: 6
+
+Results for tdce/combo.my_out:
+4
+
+total_dyn_inst: 4
+
+******************************
+Results for tdce/diamond.bril:
+1
+
+total_dyn_inst: 6
+
+Results for tdce/diamond.my_out:
+1
+
+total_dyn_inst: 6
+
+******************************
+Results for tdce/double-pass.bril:
+6
+
+total_dyn_inst: 6
+
+Results for tdce/double-pass.my_out:
+6
+
+total_dyn_inst: 4
+
+******************************
+Results for tdce/double.bril:
+6
+
+total_dyn_inst: 6
+
+Results for tdce/double.my_out:
+6
+
+total_dyn_inst: 4
+
+******************************
+Results for tdce/simple.bril:
+6
+
+total_dyn_inst: 5
+
+Results for tdce/simple.my_out:
+6
+
+total_dyn_inst: 4
+
+******************************
+Results for tdce/skipped.bril:
+4
+
+total_dyn_inst: 4
+
+Results for tdce/skipped.my_out:
+4
+
+total_dyn_inst: 4
+

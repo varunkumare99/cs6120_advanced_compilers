@@ -1,0 +1,162 @@
+******************************
+Results for lvn/reassign.bril:
+42
+
+total_dyn_inst: 3
+
+Results for lvn/reassign.my_out:
+42
+
+total_dyn_inst: 2
+
+******************************
+Results for lvn/logical-operators.bril:
+
+total_dyn_inst: 19
+
+Results for lvn/logical-operators.my_out:
+
+total_dyn_inst: 0
+
+******************************
+Results for lvn/nonlocal-clobber.bril:
+1
+
+total_dyn_inst: 4
+
+Results for lvn/nonlocal-clobber.my_out:
+1
+
+total_dyn_inst: 4
+
+Error processing divide-by-zero.bril: Command 'bril2json < lvn/divide-by-zero.bril | brili -p' returned non-zero exit status 2.
+******************************
+Results for lvn/redundant-dce.bril:
+36
+
+total_dyn_inst: 6
+
+Results for lvn/redundant-dce.my_out:
+36
+
+total_dyn_inst: 5
+
+******************************
+Results for lvn/clobber-arg.bril:
+
+total_dyn_inst: 3
+
+Results for lvn/clobber-arg.my_out:
+
+total_dyn_inst: 3
+
+******************************
+Results for lvn/rename-fold.bril:
+0
+4
+
+total_dyn_inst: 7
+
+Results for lvn/rename-fold.my_out:
+0
+4
+
+total_dyn_inst: 6
+
+******************************
+Results for lvn/redundant.bril:
+36
+
+total_dyn_inst: 6
+
+Results for lvn/redundant.my_out:
+36
+
+total_dyn_inst: 5
+
+******************************
+Results for lvn/idchain.bril:
+4
+
+total_dyn_inst: 5
+
+Results for lvn/idchain.my_out:
+4
+
+total_dyn_inst: 2
+
+******************************
+Results for lvn/clobber.bril:
+36
+
+total_dyn_inst: 10
+
+Results for lvn/clobber.my_out:
+36
+
+total_dyn_inst: 5
+
+******************************
+Results for lvn/clobber-fold.bril:
+36
+
+total_dyn_inst: 10
+
+Results for lvn/clobber-fold.my_out:
+36
+
+total_dyn_inst: 5
+
+******************************
+Results for lvn/nonlocal.bril:
+36
+
+total_dyn_inst: 7
+
+Results for lvn/nonlocal.my_out:
+36
+
+total_dyn_inst: 7
+
+******************************
+Results for lvn/fold-comparisons.bril:
+
+total_dyn_inst: 15
+
+Results for lvn/fold-comparisons.my_out:
+
+total_dyn_inst: 0
+
+******************************
+Results for lvn/commute.bril:
+36
+
+total_dyn_inst: 6
+
+Results for lvn/commute.my_out:
+36
+
+total_dyn_inst: 5
+
+******************************
+Results for lvn/idchain-nonlocal.bril:
+4
+
+total_dyn_inst: 6
+
+Results for lvn/idchain-nonlocal.my_out:
+4
+
+total_dyn_inst: 6
+
+******************************
+Results for lvn/idchain-prop.bril:
+4
+
+total_dyn_inst: 5
+
+Results for lvn/idchain-prop.my_out:
+4
+
+total_dyn_inst: 2
+
