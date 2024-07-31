@@ -1,0 +1,30 @@
+@fac(x: int): int {
+  v1: int = id x; #d1
+  v2: int = const 1; #d2
+  v3: bool = le v1 v2; #d3
+  br v3 .then.0 .else.0;
+.then.0:
+  v4: int = const 1; #d4
+  ret v4;
+.else.0:
+  v5: int = id x; #d5
+  v3: int = id x; #d6
+  v7: int = const 1; #d7
+  v8: int = sub v1 v2; #d8
+  v9: int = call @fac v8; #d9
+  v4: int = mul v5 v9; #d10
+  result: int = id v10; #d11
+  v11: int = id result; #d12
+  ret v11;
+}
+
+#                gen                                     kill
+# B0      {d1, d2, d3}                                   0 
+# then    {d4}                                           0
+# else    {d5, d6, d7, d8, d9, d10, d11}              {d3, d4}
+
+             
+#              IN-DATA                          OUT-DATA
+# B0            0                             {d1, d2, d3}
+# then       {d1, d2, d3}                     {d1, d2, d3, d4}
+# else       {d1, d2, d3}                     {d1, d2, d3, d5, d6, d7, d8, d9, d10, d11}

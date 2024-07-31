@@ -1,0 +1,28 @@
+@main(cond: bool){
+   j: int = mul a a;
+   k: int  = mul b b;
+   br cond .B2 .B3;
+.B2:
+   x: int = add a b;
+   b: int = add c d;
+   m: int = mul n n;
+   jmp .end;
+.B3:
+   c: int = mul n n;
+   jmp .end;
+.end:
+   h: int = mul a a;
+}
+
+
+#       killn             Genn
+#  B0     0             {a * a, b * b}
+#  B2  {b * b, a + b}   {a + b, c + d, n * n}
+#  B3  {c + d}          {n * n}
+#  end    0             {a * b}
+
+#       IN                               OUT
+#  B0   {a * a, b * b, n * n}           {n * n, a * a}
+#  B1   {a + b, c + d, n * n, a * a}    {a * a}
+#  B2   {a * a, n * n}                  {a * a}
+#  end  {a * a}                             0

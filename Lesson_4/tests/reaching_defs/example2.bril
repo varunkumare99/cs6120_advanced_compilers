@@ -1,0 +1,30 @@
+@main(cond: bool){
+   i: int = sub m m; #d1
+   j: int  = add n n; #d2
+   a: int = add u1 u1; #d3
+   jmp .B2;
+.B2:
+   i: int  = add i i; #d4
+   j: int = sub j j; #d5
+   br cond .B4 .B3;
+.B3:
+   a: int = add u2 u2; #d6
+   jmp .B4;
+.B4:
+   i: int = add u3 u3; #d7
+   br cond .B2 .end;
+.end:
+}
+
+
+#       killn             Genn
+#  B0  {d4, d5, d6, d7}   {d1, d2, d3} 
+#  B2  {d1, d2, d7}       {d4, d5} 
+#  B3  {d3}               {d6} 
+#  B4  {d1, d4}           {d7}
+
+#       IN                             OUT
+#  B0   0                        {d1, d2, d3}           
+#  B2  {d1, d2, d3, d5, d6, d7}  {d4, d5, d3, d6} 
+#  B3  {d3, d4, d5,d6}           {d4, d5, d6}
+#  B4  {d3, d4, d5, d6}          {d3, d5, d6, d7}

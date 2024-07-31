@@ -1,0 +1,30 @@
+@main(cond: bool){
+   i: int = sub m m; #d1
+   j: int  = add n n; #d2
+   a: int = add u1 u1; #d3
+   jmp .B2;
+.B2:
+   i: int  = add i i; #d4
+   j: int = sub j j; #d5
+   br cond .B4 .B3;
+.B3:
+   a: int = add u2 u2; #d6
+   jmp .B4;
+.B4:
+   i: int = add a a; #d7
+   br cond .B2 .end;
+.end:
+}
+
+
+#       Use             Def
+#  B0  {m, n, u1}      {i, j, a} 
+#  B2  {i, j, cond}    {i, j}
+#  B3  {u2}            {a}
+#  B4  {a, cond}       {i}
+
+#       IN                             OUT
+#  B0  {m, n, u1, cond, u2}      {i, j, cond, a, u2}
+#  B2  {i, j, cond, a, u2}       {a, cond, j, u2} 
+#  B3  {u2, cond, j}             {a, cond, j, u2}
+#  B4  {a, cond, j, u2}          {i, j, cond, a, u2}

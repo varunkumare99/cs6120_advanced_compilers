@@ -1,0 +1,31 @@
+@main(cond: bool){
+   br cond .B2 .B4;
+.B2:
+   x: int = sub b a;
+   jmp .B3;
+.B3:
+   y: int = sub a b;
+   jmp .end;
+.B4:
+   a: int = sub b a;
+   jmp .B5;
+.B5:
+   x: int  = sub a b;  
+   jmp .end;
+.end:
+}
+
+
+#       killn         Genn
+#  1      0            0
+#  2      0          {b-a} 
+#  3      0          {a-b}
+#  4    {a-b, b-a}   {b-a}
+#  5      0          {a-b}
+
+#       IN           OUT
+#  1  {b-a}         {b-a}
+#  2  {a-b, b-a}    {a-b}
+#  3  {a-b}           0
+#  4  {b-a}         {a-b}
+#  5  {a-b}           0

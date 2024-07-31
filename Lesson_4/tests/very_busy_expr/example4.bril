@@ -1,0 +1,18 @@
+@main(a: int, b: int){
+.B2:
+   x: int = add a b;
+   jmp .B2;
+}
+
+
+#       killn             Genn
+#  B0     0             {a * a, b * b}
+#  B2  {b * b, a + b}   {a + b, c + d, n * n}
+#  B3  {c + d}          {n * n}
+#  end    0             {a * b}
+
+#       IN                               OUT
+#  B0   {a * a, b * b, n * n}           {n * n, a * a}
+#  B1   {a + b, c + d, n * n, a * a}    {a * a}
+#  B2   {a * a, n * n}                  {a * a}
+#  end  {a * a}                             0
