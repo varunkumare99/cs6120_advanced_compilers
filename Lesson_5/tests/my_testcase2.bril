@@ -1,0 +1,22 @@
+@main(cond: bool) {
+.B1:
+   br cond .B2 .B3;
+.B2:
+   jmp .B3; 
+.B3:
+   jmp .B4;
+.B4:
+   br cond .B5 .B6;
+.B5:
+   jmp .B7;
+.B6:
+   jmp .B7;
+.B7:
+   br cond .B4 .B8;
+.B8:
+   br cond .B9 .B10;
+.B9:
+   jmp .B1;
+.B10:
+   jmp .B7;
+}
