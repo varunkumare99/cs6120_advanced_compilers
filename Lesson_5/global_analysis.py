@@ -185,15 +185,18 @@ def dom_frontier(all_blocks):
 
     for block in all_blocks:
         curr_block_name = block[0]["name"]
-        #print("curr_block_name", curr_block_name)
-        for dom_key, dom_value in dom.items():
-            if curr_block_name != dom_key and curr_block_name in dom_value:
-                successors = get_block_successors(dom_key, all_blocks)
-                #print("successors dom_key dom_value", successors, dom_key, dom_value)
-                for succ in successors:
-                    if succ != DUMMY_EXIT_BLOCK and curr_block_name not in dom[succ]:
-                        #print("succ dom[succ]", succ, dom[succ])
-                        dom_frontier[curr_block_name].append(succ)
+        print("curr_block_name", curr_block_name)
+        for block2 in all_blocks:
+            curr_block2_name = block2[0]["name"]
+            if curr_block_name != curr_block2_name and curr_block_name in dom[curr_block2_name]:
+                continue
+            predecessors = get_block_predecessors(curr_block2_name, all_blocks)
+            print("curr_block2_name, predecessors", curr_block2_name, predecessors)
+            print("\n")
+            for pred in predecessors:
+                if curr_block_name in dom[pred]:
+                    dom_frontier[curr_block_name].append(curr_block2_name)
+                    break
 
     print("---------dom_frontier-------")
     for key, value in dom_frontier.items():
@@ -403,7 +406,6 @@ def get_block_predecessors(block_name, all_blocks):
     predecessors = []
     if block_name == all_blocks[0][0]["name"]:
         predecessors.append(DUMMY_ENTRY_BLOCK)
-        return predecessors
     block_name_index = 0
     for index, block in enumerate(all_blocks):
         if block_name == block[0]["name"]:
