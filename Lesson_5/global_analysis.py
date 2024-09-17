@@ -141,7 +141,6 @@ def add_predecessors_curr_block_worklist(worklist, curr_block_name, all_blocks):
 
 def add_successors_curr_block_worklist(worklist, curr_block_name, all_blocks):
     successors = get_block_successors(curr_block_name, all_blocks)
-
     #if succ is not in successors only then add to worklist
     for succ in successors:
         if succ not in worklist and succ != DUMMY_ENTRY_BLOCK and succ != DUMMY_EXIT_BLOCK:

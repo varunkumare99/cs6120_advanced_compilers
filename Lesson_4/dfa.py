@@ -10,6 +10,7 @@ import sys
 import json
 import copy
 
+
 TERMINATORS = "jmp", "br", "ret"
 JMP_OR_BRANCH = "jmp", "br"
 COMMUTATIVE_OPS = "add", "mul", "sub", "and", "or"

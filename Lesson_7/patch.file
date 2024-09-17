@@ -1,0 +1,83 @@
+diff --git a/llvm/include/llvm/Transforms/Utils/myLLVMPass.h b/llvm/include/llvm/Transforms/Utils/myLLVMPass.h
+new file mode 100644
+index 000000000..8f727f28d
+--- /dev/null
++++ b/llvm/include/llvm/Transforms/Utils/myLLVMPass.h
+@@ -0,0 +1,15 @@
++#ifndef LLVM_TRANSFORMS_myLLVMPASS_H
++#define LLVM_TRANSFORMS_myLLVMPASS_H
++
++#include "llvm/IR/PassManager.h"
++
++namespace llvm {
++
++class myLLVMPass : public PassInfoMixin<myLLVMPass> {
++public:
++  PreservedAnalyses run(Function &F, FunctionAnalysisManager &AM);
++};
++
++} // namespace llvm
++
++#endif // LLVM_TRANSFORMS_myLLVMPASS_H
+diff --git a/llvm/lib/Passes/PassBuilder.cpp b/llvm/lib/Passes/PassBuilder.cpp
+index 63173c4ab..bd46efc2e 100644
+--- a/llvm/lib/Passes/PassBuilder.cpp
++++ b/llvm/lib/Passes/PassBuilder.cpp
+@@ -321,6 +321,7 @@
+ #include "llvm/Transforms/Vectorize/LoopVectorize.h"
+ #include "llvm/Transforms/Vectorize/SLPVectorizer.h"
+ #include "llvm/Transforms/Vectorize/VectorCombine.h"
++#include "llvm/Transforms/Utils/myLLVMPass.h"
+ #include <optional>
+ 
+ using namespace llvm;
+diff --git a/llvm/lib/Passes/PassRegistry.def b/llvm/lib/Passes/PassRegistry.def
+index d6067089c..1df456bd8 100644
+--- a/llvm/lib/Passes/PassRegistry.def
++++ b/llvm/lib/Passes/PassRegistry.def
+@@ -470,6 +470,7 @@ FUNCTION_PASS("tlshoist", TLSVariableHoistPass())
+ FUNCTION_PASS("transform-warning", WarnMissedTransformationsPass())
+ FUNCTION_PASS("trigger-crash-function", TriggerCrashFunctionPass())
+ FUNCTION_PASS("trigger-verifier-error", TriggerVerifierErrorPass())
++FUNCTION_PASS("myLLVM-pass", myLLVMPass())
+ FUNCTION_PASS("tsan", ThreadSanitizerPass())
+ FUNCTION_PASS("typepromotion", TypePromotionPass(TM))
+ FUNCTION_PASS("unify-loop-exits", UnifyLoopExitsPass())
+diff --git a/llvm/lib/Transforms/Utils/CMakeLists.txt b/llvm/lib/Transforms/Utils/CMakeLists.txt
+index b5a7eedba..cfe27c6c3 100644
+--- a/llvm/lib/Transforms/Utils/CMakeLists.txt
++++ b/llvm/lib/Transforms/Utils/CMakeLists.txt
+@@ -86,6 +86,7 @@ add_llvm_component_library(LLVMTransformUtils
+   Utils.cpp
+   ValueMapper.cpp
+   VNCoercion.cpp
++  myLLVMPass.cpp
+ 
+   ADDITIONAL_HEADER_DIRS
+   ${LLVM_MAIN_INCLUDE_DIR}/llvm/Transforms
+diff --git a/llvm/lib/Transforms/Utils/myLLVMPass.cpp b/llvm/lib/Transforms/Utils/myLLVMPass.cpp
+new file mode 100644
+index 000000000..c07e0b300
+--- /dev/null
++++ b/llvm/lib/Transforms/Utils/myLLVMPass.cpp
+@@ -0,0 +1,20 @@
++#include "llvm/Transforms/Utils/myLLVMPass.h"
++#include "llvm/IR/Function.h"
++#include "llvm/Support/Debug.h"
++#include "llvm/IR/Instruction.h"
++#define DEBUG_TYPE "varun"
++using namespace llvm;
++
++PreservedAnalyses myLLVMPass::run(Function &F, FunctionAnalysisManager &AM) {
++	for (auto& B : F) {
++		for (auto& I : B) {
++			if (I.getOpcode() == llvm::Instruction::FDiv) {
++				errs() << "FDiv Instruction: " << I << "\n";
++			}
++			else {
++				errs() << "normalOPs Instruction: " << I << "\n";
++		       }	
++		}
++	}
++	return PreservedAnalyses::all();
++}
