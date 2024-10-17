@@ -1,0 +1,22 @@
+@main(cond: bool) {
+.entry1:
+  a: int = const 47;
+  br cond .B2 .B5;
+.B2:
+  a: int = const 36;
+  br cond .B3 .B4;
+.B3:
+  a: int = add a a;
+  jmp .B6;
+.B4:
+  a: int = mul a a;
+  jmp .B6;
+.B6:
+  print a;
+  jmp .B7;
+.B5:
+  print a;
+  br cond .B7 .entry1;
+.B7:
+  print a;
+}

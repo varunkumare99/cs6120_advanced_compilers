@@ -1,0 +1,24 @@
+#result
+#LI
+# z = a * b
+# y = a + a
+# no preheader
+@main(in_var: int) {
+.header:
+	x: int = const 10;	
+        y: int = add in_var in_var;
+        cond: bool = gt x i;
+        br cond .body1 .exit;
+
+.body1:
+        one: int = const 1;
+
+.body2:
+        i: int = add i one;
+        print i;
+	jmp .header;
+
+.exit:
+ 	print z;
+	ret;
+}

@@ -1,0 +1,29 @@
+#condition in loop
+#limination of natural it will consider as two loops
+#results
+#left loop
+#z = x + x
+#p = x * z
+#right loop
+#z = x + x
+#q = x - z
+@main(cond: bool) {
+.B0:
+	x:int = const 5;
+        jmp .B1;
+.B1:
+        z: int = add x x;
+	br cond .B2 .B3;
+.B2:
+        p: int = mul x z;
+	br cond .B1 .B4;
+.B3:
+        q: int = sub x z;
+	br cond .B1 .B4;
+.B4:
+        r: int = add p q;
+	jmp .exit;
+.exit:
+	ret;
+}
+	

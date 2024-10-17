@@ -1,0 +1,21 @@
+#fernando 1
+@main(cond: bool) {
+.L0:
+	t:int = const 0;
+	a:int = const 0;
+	b:int = const 0;
+        jmp .L1;
+.L1:
+        one: int = const 1;
+        i: int = add i one;
+        t:int = add a b;
+        m:int = t;
+	br cond .L2 .L1;
+.L2:
+        x:int = id t;
+	jmp .exit;
+
+.exit:
+	ret;
+}
+	

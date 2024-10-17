@@ -1,0 +1,35 @@
+#result
+#LI instrs
+# q = y + y
+@main(cond: bool) {
+.B0:
+        x: int = const 3;
+        br cond .B1 .B2;
+.B1:
+	y: int = const 4;
+        jmp .B3;
+.B2:
+	y: int = const 6;
+        jmp .B3;
+
+.B3:
+	z: int = mul x y;
+        q: int = add y y;
+        w: int = add y z;
+        br cond .B4 .B5;
+.B4:
+        p: int = add w y;
+        one: int = const 1;
+        x: int = add x one;
+        q: int = add q one;
+        br cond .exit .B3;
+
+.B5:
+       five: int = const 5;
+       w: int = add w five;
+       jmp .exit;
+
+.exit:
+	ret;
+}
+	

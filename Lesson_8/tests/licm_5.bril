@@ -1,0 +1,35 @@
+#nested loop to common header
+#results
+#for smaller loop
+#z = x + x
+#y = x * x
+#k = x * x
+#r = y * x
+#for bigger loop
+#z = x + x
+#y = x * x
+#k = z * x
+#r = y * x
+#q = x * x
+@main(cond: bool) {
+.B0:
+	x:int = const 5;
+        jmp .B1;
+.B1:
+        z: int = add x x;
+	jmp .B2;
+.B2:
+        y: int = mul x x;
+	jmp .B3;
+.B3:
+        k: int = mul z x;
+        r: int = mul y x;
+	br cond .B1 .B4;
+.B4:
+        q: int = mul x x;
+        p: int = mul p x;
+	br cond .exit .B1;
+.exit:
+	ret;
+}
+	

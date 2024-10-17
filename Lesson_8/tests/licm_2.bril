@@ -1,0 +1,37 @@
+#multiple pred to loop header
+#result
+#LI
+#z = a * b
+#y = a + a
+@main(cond: bool) {
+	a: int = const 5;
+	b: int = const 6;
+        i: int = const 0;
+        z: int = const 0;
+        br cond .header header2;
+
+.header:
+	x: int = const 10;	
+        y: int = add a a;
+        cond: bool = gt x i;
+        br cond .body1 .exit;
+
+.body1:
+	z: int = mul a b;
+        one: int = const 1;
+
+.body2:
+        i: int = add i one;
+        #y: int = add a a;
+        print i;
+	jmp .header;
+
+.header2:
+       y: int = const 20;
+       jmp .header;
+
+.exit:
+ 	print z;
+	ret;
+}
+	

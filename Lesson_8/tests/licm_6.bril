@@ -1,0 +1,33 @@
+#nested loops
+#results
+#inner loop
+#y = x * x
+#k = x * x
+#r = z * x
+#outter loop
+#y = x * x
+#k = x * x
+#q = x * x
+@main(cond: bool) {
+.B0:
+	x:int = const 5;
+        jmp .B1;
+.B1:
+        #z: int = add x x;
+        z: int = const 7;
+	jmp .B2;
+.B2:
+        y: int = mul x x;
+	jmp .B3;
+.B3:
+        k: int = mul x x;
+        r: int = mul z x;
+	br cond .B2 .B4;
+.B4:
+        q: int = mul x x;
+        p: int = mul p x;
+	br cond .exit .B1;
+.exit:
+	ret;
+}
+	

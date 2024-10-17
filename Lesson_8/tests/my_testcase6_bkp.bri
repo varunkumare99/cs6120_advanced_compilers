@@ -1,0 +1,37 @@
+@main(cond: bool) {
+.B1:
+  a: int = const 1;
+  br cond .B5 .B9;
+.B4:
+  print a;
+  jmp .B13;
+.B5:
+  a: int = const 2;
+  br cond .B6 .B7;
+.B6:
+  a: int = const 3;
+  br cond .B4 .B8;
+.B7:
+  a: int = const 4;
+  b: int = const 7;
+  br cond .B8 .B12;
+.B8:
+  a: int = add a a;
+  br cond .B5 .B13;
+.B9:
+  a: int = const 5;
+  br cond .B10 .B11;
+.B10:
+  a: int = const 6;
+  b: int = const 10;
+  jmp .B12;
+.B11:
+  a: int = const 7;
+  jmp .B12;
+.B12:
+  a: int = mul a a;
+  print b;
+  jmp .B13;
+.B13:
+  print a;
+}
